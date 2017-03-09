@@ -1,0 +1,218 @@
+\documentclass[dvipsnames, final]{beamer}
+
+\usepackage[orientation=portrait, size=a0, scale=1.3]{beamerposter}
+\usepackage[absolute,overlay]{textpos}
+\usepackage{xcolor}
+\usepackage{lmodern}
+\usepackage{minted}
+\usepackage{upquote}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{xspace}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{pgfplots}
+\usepackage{ragged2e}
+
+\usetheme{metropolis}
+\usemintedstyle{manni}
+\usetikzlibrary{mindmap,shadows,arrows,positioning,chains,fit,shapes,decorations.markings}
+
+\definecolor{gmitblue}{RGB}{20,134,225}
+\definecolor{gmitred}{RGB}{220,20,60}
+\definecolor{gmitgrey}{RGB}{67,67,67}
+
+\setbeamercolor{structure}{fg=gmitblue}
+\setbeamercolor{alerted text}{fg=gmitblue,bg=white}
+\setbeamercolor{block title}{fg=gmitblue,bg=white}
+\setbeamercolor{alterted title}{bg=white}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{bibliography item}{--}
+
+\setbeamertemplate{headline}{
+ \leavevmode
+  \begin{columns}
+   \begin{column}{\linewidth}
+    \vskip1cm
+    \centering
+    \usebeamercolor{title in headline}{\color{gmitblue}\Huge{\textbf{\inserttitle}}\\[0.5ex]}
+    \usebeamercolor{author in headline}{\color{fg}\Large{\insertauthor}\\[1ex]}
+    \usebeamercolor{institute in headline}{\color{fg}\large{\insertinstitute}\\[1ex]}
+    \vskip1cm
+   \end{column}
+   \vspace{1cm}
+  \end{columns}
+ \vspace{0.5in}
+ \hspace{0.5in}\begin{beamercolorbox}[wd=47in,colsep=0.15cm]{cboxb}\end{beamercolorbox}
+ \vspace{0.1in}
+}
+
+
+\pgfplotsset{every axis/.append style={
+                    axis x line=middle,    % put the x axis in the middle
+                    axis y line=middle,    % put the y axis in the middle
+                    axis line style={<->}, % arrows on the axis
+                    label style={font=\tiny},
+                    tick label style={font=\tiny}  
+                    }, legend style = {font=\tiny}}
+
+
+\newcommand{\hr}{\rule{\textwidth}{0.5pt}\newline}
+
+\makeatletter
+\expandafter\def\csname PYGdefault@tok@err\endcsname{\def\PYGdefault@bc##1{{\strut ##1}}}
+\makeatother
+
+\newlength{\sepwidth}
+\newlength{\colwidth}
+
+\setlength{\paperwidth}{841mm}
+\setlength{\paperheight}{1189mm}
+
+\setlength{\sepwidth}{0.01\paperwidth}
+\setlength{\colwidth}{0.26\paperwidth}
+
+\title{Example A0 poster}
+\subtitle{}
+\author{Dr Ian McLoughlin (ian.mcloughlin@gmit.ie)}
+\institute{Department and University Name}
+\date{}
+
+\begin{document}
+
+\addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
+\addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
+
+\setlength{\belowcaptionskip}{2ex} % White space under figures
+\setlength\belowdisplayshortskip{2ex} % White space under equations
+
+\begin{frame}[t,fragile]
+
+\begin{columns}[t]
+
+\begin{column}{\colwidth}
+
+
+\begin{block}{Turing stuff}
+  
+  \justifying
+  I propose to consider the question \emph{Can machines think?}
+  This should begin with definitions of the meaning of the terms machine and think.
+  The definitions might be framed so as to reflect so far as possible the normal use of the words, but this attitude is dangerous.
+  If the meaning of the words machine and think are to be found by examining how they are commonly used it is difficult to escape the conclusion that the meaning and the answer to the question is to be sought in a statistical survey such as a Gallup poll.
+  But this is absurd.
+  Instead of attempting such a definition I shall replace the question by another, which is closely related to it and is expressed in relatively unambiguous words.
+  \hr
+  The question and answer method seems to be suitable for introducing almost any one of the fields of human endeavour that we wish to include.
+  We do not wish to penalise the machine for its inability to shine in beauty competitions, nor to penalise a man for losing in a race against an aeroplane.
+  The conditions of our game make these disabilities irrelevant.
+  The witnesses can brag, if they consider it advisable, as much as they please about their charms, strength or heroism, but the interrogator cannot demand practical demonstrations.
+\end{block}
+
+
+\begin{block}{Comparisons}
+  \begin{itemize}
+    \item Suppose we have a list with 5 elements.
+    \item Best case scenario: list already sorted.
+    \item Worst case scenario: list reverse sorted.
+  \end{itemize}
+  \[ [1,2,3,4,5] \]
+  \[ [5,2,1,4,3] \]
+  \[ [5,4,3,2,1] \]
+\end{block}
+
+
+\begin{block}{Example table}
+  \begin{table}
+    \begin{tabular}{l@{\hspace{1cm}}r@{\hspace{1cm}}r}
+      Input & Algorithm A &  Algorithm B \\
+      \hline
+      (1,2,3) &  1ms &  1ms \\
+      (1,3,2) &  1ms &  5ms \\
+      (2,1,3) &  2ms &  4ms \\
+      (2,3,1) &  2ms &  5ms \\
+      (3,1,2) &  2ms &  5ms \\
+      (3,2,1) & 10ms &  4ms \\
+      \hline
+      Average &  3ms &  4ms \\
+      Worst   & 10ms &  5ms
+    \end{tabular}
+  \end{table}
+\end{block}
+
+
+\end{column}
+
+\begin{column}{\sepwidth}\end{column}
+
+\begin{column}{\colwidth}
+
+
+\begin{block}{Plot}
+  \begin{figure}
+    \begin{center}
+      \begin{adjustbox}{width=\colwidth, center}
+        \begin{tikzpicture}
+          \begin{axis}[xmin=0, domain=0:7, axis x line=bottom, axis y line=left, legend style={at={(0.5,0.5)},anchor=south}]
+            \addplot[red]   {pow(2,x)};
+            \addplot[black] {pow(x,2)};
+            \addplot[blue]  {2*x};
+            \addplot[cyan]  {ln(x)/ln(2))};
+            \legend{$2^n$,$n^2$,$2n$,$\log n$};
+          \end{axis}
+        \end{tikzpicture}
+      \end{adjustbox}
+    \end{center}
+  \end{figure}
+\end{block}
+
+
+\begin{block}{Example of a figure}
+  \begin{center}
+    \begin{figure}
+      \fbox{\includegraphics[width=\colwidth]{img/python.png}}
+      \caption{A figure}
+    \end{figure}
+  \end{center}
+\end{block}
+
+
+\end{column}
+
+\begin{column}{\sepwidth}\end{column}
+
+\begin{column}{\colwidth}
+
+
+\begin{block}{Cooooddde}
+  \begin{minted}{c}
+function is_prime(n) {
+  for (var i = 2; i < n; i++) {
+    if (n % i == 0)
+      return false;
+  }
+  return true;
+}
+  \end{minted}
+\end{block}
+
+
+\begin{block}{References}
+  \nocite{*}
+  \bibliographystyle{ieeetr}
+  \bibliography{bibliography}
+\end{block}
+
+
+\end{column}
+
+\end{columns}
+
+\end{frame}
+
+\end{document} 
