@@ -77,6 +77,12 @@
 \setlength{\sepwidth}{0.01\paperwidth}
 \setlength{\colwidth}{0.26\paperwidth}
 
+\addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
+\addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
+
+\setlength{\belowcaptionskip}{2ex} % White space under figures
+\setlength\belowdisplayshortskip{2ex} % White space under equations
+
 \title{Example A0 poster}
 \subtitle{}
 \author{Dr Ian McLoughlin (ian.mcloughlin@gmit.ie)}
@@ -85,11 +91,7 @@
 
 \begin{document}
 
-\addtobeamertemplate{block end}{}{\vspace*{2ex}} % White space under blocks
-\addtobeamertemplate{block alerted end}{}{\vspace*{2ex}} % White space under highlighted (alert) blocks
 
-\setlength{\belowcaptionskip}{2ex} % White space under figures
-\setlength\belowdisplayshortskip{2ex} % White space under equations
 
 \begin{frame}[t,fragile]
 
